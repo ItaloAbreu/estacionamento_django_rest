@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: ./dockers/estacionamento/Dockerfile
-    command: python manage.py runserver 0.0.0.0:8000
+    command: python ./source/manage.py runserver 0.0.0.0:8000
     volumes:
       - ./source:/source
     ports:

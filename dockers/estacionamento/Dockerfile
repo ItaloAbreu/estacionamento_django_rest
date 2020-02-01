@@ -1,7 +1,4 @@
-RUN apk update && \
-    apk add --no-cache \
-        pcre-dev \
-        linux-headers \
-        python-dev
+FROM python:3.8
 
-RUN pip install -r ./source/requirements.txt
+COPY source/requirements.txt ./
+RUN pip install -r requirements.txt
