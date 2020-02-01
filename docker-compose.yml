@@ -8,6 +8,6 @@ services:
     volumes:
       - ./source:/source
     ports:
-      - "${MYPORT}:8000"
+      - "8000:8000"
     env_file:
       - .env
