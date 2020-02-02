@@ -4,4 +4,11 @@ from .models import Parking
 class ParkingSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Parking
-        fields = ['plate']
+        fields = [
+            'id',
+            'plate',
+            'reservation',
+            'arrival',
+            'departure',
+            'paid'
+        ]
