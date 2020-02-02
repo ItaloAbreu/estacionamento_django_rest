@@ -1,9 +1,11 @@
 from django.db import models
 from django.utils import timezone
+from .validators import validate_plate
 
 # Create your models here.
 class Parking(models.Model):
-	plate = models.CharField(max_length=8, verbose_name='Placa do Veículo')
+	plate = models.CharField(
+		max_length=8, validators=[validate_plate], verbose_name='Placa do Veículo')
 	reservation =  models.CharField(
 		max_length=9, verbose_name='Número da Reserva')
 	arrival = models.DateTimeField(auto_now_add=True, verbose_name='Entrada')
