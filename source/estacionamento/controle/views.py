@@ -9,7 +9,7 @@ class ParkingViewSet(viewsets.ModelViewSet):
     serializer_class = ParkingSerializer
 
     @action(detail=True, methods=['put'])
-    def paid(self, request, pk=None):
+    def pay(self, request, pk=None):
         parking_to_paid = self.get_object()
         serializer = ParkingSerializer
         if parking_to_paid:
