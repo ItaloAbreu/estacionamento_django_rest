@@ -4,10 +4,10 @@ services:
     build:
       context: .
       dockerfile: ./dockers/estacionamento/Dockerfile
-    command: python ./source/manage.py runserver 0.0.0.0:8000
+    command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - ./source:/source
     ports:
-      - "8000:8000"
+      - "${APP_PORT}:8000"
     env_file:
       - .env
