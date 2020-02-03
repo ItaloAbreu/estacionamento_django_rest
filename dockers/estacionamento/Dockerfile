@@ -1,4 +1,6 @@
 FROM python:3.8
 
-COPY source/requirements.txt ./
-RUN pip install -r requirements.txt
+WORKDIR source/
+
+COPY . .
+RUN pip install -r source/requirements.txt
