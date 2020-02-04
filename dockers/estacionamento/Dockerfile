@@ -2,5 +2,6 @@ FROM python:3.8
 
 WORKDIR source/
 
-COPY . .
-RUN pip install -r source/requirements.txt
+COPY source/requirements.txt requirements.txt
+COPY .env .env
+RUN pip install -r requirements.txt
