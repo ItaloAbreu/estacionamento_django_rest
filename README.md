@@ -4,7 +4,7 @@ Este projeto foi feito seguindo as instruções de [teste backend](https://githu
 
 # O projeto
 
-Uma API com Django Rest Framework de controle de estacionamento (conforme contratos abaixo):
+Uma API com [Django Rest Framework](https://www.django-rest-framework.org/) e [Docaker Compose](https://docs.docker.com/compose/), de controle de estacionamento (conforme contratos abaixo):
 
   - Registra entrada, saída e pagamento
   - Não liberar saída sem pagamento
