@@ -1,6 +1,7 @@
 from rest_framework import status, viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from rest_framework import generics
 from django.utils import timezone
 from estacionamento.controle.models import Parking
 from estacionamento.controle.serializers import ParkingSerializer
@@ -44,3 +45,26 @@ class ParkingViewSet(viewsets.ModelViewSet):
             return Response({
                 'status': 'Veículo já partiu do estacionamento.'
             })
+
+class ParkingHistoric(generics.GenericAPIView):
+    serializer_class = ParkingSerializer
+    queryset = Parking.objects.all()
+
+    def get(self, request, plate, *args, **kwargs):
+        from django.utils import timezone
+        from estacionamento.utils import diff_of_times
+
+        filtred = self.queryset.filter(plate=plate)
+        history_list = []
+
+        for vehicle in filtred:
+            departure_or_now = vehicle.departure or timezone.now()
+            hist = dict(
+                id=vehicle.id,
+                time=diff_of_times(departure_or_now, vehicle.arrival),
+                paid=vehicle.paid,
+                left=True if vehicle.departure else False,
+            )
+            history_list.append(hist)
+
+        return Response(history_list)

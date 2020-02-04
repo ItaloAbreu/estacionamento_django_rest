@@ -34,5 +34,6 @@ PUT /parking/{id}/pay
 ```
 
 ### Histórico
-
-Será implementado em breve.
+```
+GET /historic/{plate}
+```
