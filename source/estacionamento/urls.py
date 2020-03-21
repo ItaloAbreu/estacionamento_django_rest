@@ -16,14 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
-from estacionamento.controle import views
+from controle.views import ParkingHistoric
+from controle.views import ParkingViewSet
 
 router = routers.DefaultRouter()
-router.register(r'parking', views.ParkingViewSet)
+router.register(r'parking', ParkingViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('historic/<plate>/', views.ParkingHistoric.as_view(), name='historic'),
+    path('historic/<plate>/', ParkingHistoric.as_view(), name='historic'),
 ]
