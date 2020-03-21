@@ -3,8 +3,8 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework import generics
 from django.utils import timezone
-from estacionamento.controle.models import Parking
-from estacionamento.controle.serializers import ParkingSerializer
+from controle.models import Parking
+from controle.serializers import ParkingSerializer
 
 class ParkingViewSet(viewsets.ModelViewSet):
     queryset = Parking.objects.all().order_by('-arrival')
